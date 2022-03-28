@@ -2,17 +2,18 @@ import React from "react";
 import NumberButton from "../NumberButton";
 import { ActionContainer, Button, KeyboardContent } from "./styles";
 
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 9];
+// const keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 9];
+const keys = [7, 8, 9, "DEL", 4, 5, 6, "+", 1, 2, 3, "-", ".", 0, "/", "x"];
 
 function Keyboard() {
   return (
     <KeyboardContent>
-      {numbers.map((number) => (
-        <NumberButton number={number} />
+      {keys.map((keyItem) => (
+        <NumberButton key={Math.random()} keyItem={keyItem} />
       ))}
       <ActionContainer>
-        <Button type="reset">Reset</Button>
-        <Button type="reset">=</Button>
+        <Button variant="reset">RESET</Button>
+        <Button variant="result">=</Button>
       </ActionContainer>
     </KeyboardContent>
   );

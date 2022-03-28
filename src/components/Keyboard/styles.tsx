@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 
+type ButtonTypes = "reset" | "result";
+
 interface ButtonProps {
-  type: "reset" | "result";
+  variant: ButtonTypes;
 }
 
 export const KeyboardContent = styled.div`
@@ -17,13 +19,23 @@ export const KeyboardContent = styled.div`
 export const Button = styled.button<ButtonProps>`
   display: flex;
   background-color: ${(props) =>
-    props.type === "reset"
-      ? `var(--clr-light-grayish-orange)`
-      : `var(--clr-key-background)`};
+    props.variant === "reset"
+      ? `var(--clr-main-background)`
+      : `var( --clr-red)`};
+  border-radius: 8px;
+  padding: 20px 0;
+  box-shadow: none;
+  border: none;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--clr-white);
 `;
 
 export const ActionContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 20px;
+  grid-column: 1 / 5;
 `;

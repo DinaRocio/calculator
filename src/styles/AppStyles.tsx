@@ -5,8 +5,13 @@ export const CalculatorContent = styled.div`
   flex-direction: column;
   gap: 20px;
   margin: auto;
-  width: 100vw;
+  width: 470px;
   align-items: center;
   justify-content: center;
   height: 100vh;
+`;
+
+export const H1 = styled.h1`
+  font-size: 2rem;
+  color: var(--clr-white);
 `;

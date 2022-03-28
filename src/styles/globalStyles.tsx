@@ -7,6 +7,7 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--ff-spartan);
   }
   html {
     scroll-behavior: smooth;
@@ -44,7 +45,6 @@ export const globalStyles = css`
     --fw-black: 900;
   }
   #root {
-    font-family: var(--ff-spartan);
     line-height: 1.5;
     background-color: var(--clr-main-background);
     color: var(--white);
