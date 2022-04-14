@@ -1,17 +1,9 @@
 import React from "react";
 import "./App.css";
-import Input from "./components/Input";
-import Keyboard from "./components/Keyboard";
-import { CalculatorContent, H1 } from "./styles/AppStyles";
+import Calculator from "./components/Calculator";
 
 function App() {
-  return (
-    <CalculatorContent>
-      <H1>calc</H1>
-      <Input />
-      <Keyboard />
-    </CalculatorContent>
-  );
+  return <Calculator />;
 }
 
 export default App;
