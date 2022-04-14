@@ -43,15 +43,37 @@ function Calculator() {
   const defaultVal = cal.num ? cal.num : cal.res;
 
   const numClickHandler = (e: any) => {
-    console.log(e.target.innerHTML);
-
     const value = e.target.innerHTML;
 
     setCal({
       ...cal,
+      // to do: check
       num: cal.num === 0 && value === 0 ? "0" : cal.num + value,
       res: !cal.sign ? 0 : cal.res,
     });
+  };
+
+  const signClickHandler = (e: any) => {
+    setCal({
+      ...cal,
+      sign: e.target.innerHtml,
+      res: !cal.res && cal.num ? cal.num : cal.res,
+      num: 0,
+    });
+    return;
+  };
+
+  const equalsClickHandler = () => {
+    if (cal.sign && cal.num) {
+      const math = (a: number, b: number, sign: string) =>
+        sign === "+"
+          ? a + b
+          : sign === "-"
+          ? a - b
+          : sign === "x"
+          ? a * b
+          : a / b;
+    }
   };
 
   const onClickKey = (e: any, btn: string | number) => {
@@ -65,10 +87,7 @@ function Calculator() {
       });
       return;
     }
-    if (signButton) {
-      console.log("signButton2");
-      return;
-    }
+
     if (btn === "DEL") {
       console.log("del");
       return;
@@ -77,10 +96,17 @@ function Calculator() {
       console.log("=");
       return;
     }
+    if (signButton) {
+      signClickHandler(e);
+    }
+    if (btn === ".") {
+      equalsClickHandler();
+    }
     numClickHandler(e);
+    return;
   };
 
-  console.log(defaultVal);
+  console.log(cal);
 
   return (
     <CalculatorContent>
