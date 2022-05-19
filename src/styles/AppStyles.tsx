@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+interface Props {
+  theme: string;
+}
+
 export const CalculatorContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,7 +15,12 @@ export const CalculatorContent = styled.div`
   height: 100vh;
 `;
 
-export const H1 = styled.h1`
+export const H1 = styled.h1<Props>`
   font-size: 2rem;
-  color: var(--clr-white);
+  color: ${({ theme }) =>
+    theme === "default"
+      ? "var(--clr-white)"
+      : theme === "light"
+      ? "var(--clr-toggle-backgroun)"
+      : "var(--clr-light-yellow)"};
 `;

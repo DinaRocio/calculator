@@ -28,11 +28,15 @@ export const globalStyles = css`
     --clr-dark-red: hsl(6, 70%, 34%);
     --clr-light-grayish-orange: hsl(30, 25%, 89%);
     --clr-grayish-orange: hsl(28, 16%, 65%);
+    --clr-dark-theme: hsla(268,71%,12%)
 
     /* text */
     --clr-light-yellow: hsl(52, 100%, 62%);
     --clr-very-dark-grayish-blue: hsl(221, 14%, 31%);
     --clr-white: hsl(0, 0%, 100%);
+
+    --clr-light-special-button: rgb(27 95 101);
+    --clr-dark-special-button: rgb(188 21 244);
 
     /* Typography */
 

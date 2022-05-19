@@ -8,11 +8,25 @@ interface ButtonProps {
 
 interface NumberBoxProps {
   active: boolean;
+  theme: string;
 }
 
-export const InputBox = styled.div`
+interface KeyboardProps {
+  theme: string;
+}
+
+interface InputProps {
+  theme: string;
+}
+
+export const InputBox = styled.div<InputProps>`
   display: flex;
-  background-color: var(--clr-screen-background);
+  background-color: ${({ theme }) =>
+    theme === "default"
+      ? "var(--clr-screen-background)"
+      : theme === "light"
+      ? "var(--clr-light-grayish-orange)"
+      : "var(--clr-dark-theme"};
   width: 475px;
   height: 125px;
   border-radius: 8px;
@@ -23,7 +37,13 @@ export const InputBox = styled.div`
     margin: 8px 0;
     box-sizing: border-box;
     background-color: transparent;
-    color: var(--clr-white);
+    /* color: var(--clr-white); */
+    color: ${({ theme }) =>
+      theme === "default"
+        ? "var(--clr-white)"
+        : theme === "light"
+        ? "var(--clr-toggle-backgroun)"
+        : "var(--clr-light-yellow)"};
     font-size: 2.9rem;
     font-family: var(--ff-spartan);
     &:focus {
@@ -40,7 +60,7 @@ export const NumberBox = styled.button<NumberBoxProps>`
   background-color: ${({ active }) =>
     active ? "var(--clr-key-background)" : "var(--clr-light-grayish-orange)"};
   border-radius: 8px;
-  box-shadow: 0px 3px 0px 0px var(--clr-key-shadow);
+  box-shadow: 0 3px 0 0 var(--clr-key-shadow);
   color: ${({ active }) =>
     active ? "var(--clr-white)" : " var(--clr-very-dark-grayish-blue)"};
   padding: 10px;
@@ -49,11 +69,16 @@ export const NumberBox = styled.button<NumberBoxProps>`
   cursor: pointer;
 `;
 
-export const KeyboardContent = styled.div`
+export const KeyboardContent = styled.div<KeyboardProps>`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
-  background-color: var(--clr-screen-background);
+  background-color: ${({ theme }) =>
+    theme === "default"
+      ? "var(--clr-screen-background)"
+      : theme === "light"
+      ? "var(--clr-light-grayish-orange)"
+      : "var(--clr-dark-theme"};
   width: 475px;
   border-radius: 8px;
   padding: 30px;

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { CalculatorContent } from "../../styles/AppStyles";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../context/Theme/ThemeProvider";
+import { CalculatorContent, H1 } from "../../styles/AppStyles";
+import ThemeButton from "../ThemeButton";
 import {
   ActionContainer,
   Button,
@@ -34,6 +36,7 @@ const btnValues = [
 ];
 
 function Calculator() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [cal, setCal] = useState<Calculation>({
     sign: "",
     num: 0,
@@ -54,9 +57,11 @@ function Calculator() {
   };
 
   const signClickHandler = (e: any) => {
+    console.log(e.target.value, " signClickHandler");
+
     setCal({
       ...cal,
-      sign: e.target.innerHtml,
+      sign: e.target.value,
       res: !cal.res && cal.num ? cal.num : cal.res,
       num: 0,
     });
@@ -97,29 +102,35 @@ function Calculator() {
       return;
     }
     if (signButton) {
+      // console.log("sign buttonwas pressed");
       signClickHandler(e);
+      return;
     }
     if (btn === ".") {
       equalsClickHandler();
+      return;
     }
     numClickHandler(e);
     return;
   };
 
-  console.log(cal);
+  console.log(theme);
 
   return (
-    <CalculatorContent>
-      <InputBox>
+    <CalculatorContent theme={theme}>
+      <ThemeButton />
+      <H1 theme={theme}>Calc</H1>
+      <InputBox theme={theme}>
         <input type="number" value={defaultVal} />
       </InputBox>
-      <KeyboardContent>
+      <KeyboardContent theme={theme}>
         {btnValues.map((keyItem) => (
           <NumberBox
             key={keyItem}
             active={keyItem === "DEL"}
             value={keyItem}
             onClick={(e) => onClickKey(e, keyItem)}
+            theme={theme}
           >
             {keyItem}
           </NumberBox>
